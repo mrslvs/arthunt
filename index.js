@@ -4,6 +4,21 @@ const puppeteer = require('puppeteer');
 
 const selector = '.eael-gallery-grid-item';
 
+/**
+ * @typedef ArtItem
+ * @property {string} imageSource - Image URL
+ * @property {string} author - Author's name
+ * @property {string} name - Name of the art item
+ * @property {string} type - Type of the art item
+ * @property {float} height - Height of the art item
+ * @property {float} width - Width of the art ttem
+ */
+
+/**
+ * 
+ * @param {string} url - URL address of art items 
+ * @returns {ArtItem[]}
+ */
 async function scrapeArt(url){
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -28,16 +43,21 @@ async function scrapeArt(url){
     return arts;
 }
 
+/**
+ * @typedef {Object} ArtItemInformation
+ * @property {string} name - Name of the art item
+ * @property {string} type - Type of the art item
+ * @property {float} height - Height of the art item
+ * @property {float} width - Width of the art ttem
+ */
+
  /**
   * 
-  * @param {string} infoString unformatted string containing all of the basic information about an art item, e.g., "Dielo: FebruaryTyp: PrintRozmer: 29,7 x 42 cm"
-  * @returns {Object} 
+  * @param {string} infoString - Unformatted string containing all of the basic information about an art item, e.g., "Dielo: FebruaryTyp: PrintRozmer: 29,7 x 42 cm"
+  * @returns {ArtItemInformation}  
   */
 function extractInfo(infoString){
-    let name;
-    let type;
-    let dimensions;
-    let rest;   
+    let name, type, rest;   
     let tmp = infoString.replaceAll(/ /g, ''); // remove all spaces
 
     [name, rest] = tmp.replace('Dielo:', '').split('Typ:');
@@ -47,9 +67,7 @@ function extractInfo(infoString){
     height = parseFloat(height);
     width = parseFloat(width);
 
-    dimensions = {height, width,};
-
-    return {name,type,dimensions,};
+    return {name,type,height,width,};
 }
 
 // scrapeArt('https://www.arthunt.sk/diela/').then(data => {
