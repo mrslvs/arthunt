@@ -34,16 +34,15 @@ async function scrapeArt(url){
   * @returns {Object} 
   */
 function extractInfo(infoString){
-    // 'Dielo: FebruaryTyp: PrintRozmer: 29,7 x 42 cm'
     let name;
     let type;
     let dimensions;
-    let rest;
+    let rest;   
+    let tmp = infoString.replaceAll(/ /g, ''); // remove all spaces
 
-    [name, rest] = infoString.replace('Dielo: ', '').split('Typ: ');
-    [type, rest] = rest.split('Rozmer: ');
-    let [height, width] = rest.replace(' cm', '').replace(',', '.').split(' x ');
-    
+    [name, rest] = tmp.replace('Dielo:', '').split('Typ:');
+    [type, rest] = rest.split('Rozmer:');
+    let [height, width] = rest.replace('cm', '').replace(',', '.').split('x');
     
     height = parseFloat(height);
     width = parseFloat(width);
