@@ -2,30 +2,44 @@
 
 const puppeteer = require('puppeteer');
 
-const selector = '.card';
+const selector = '.eael-gallery-grid-item';
 
 async function scrapeArt(url){
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(url, {waitUntil: 'domcontentloaded'});
 
-    const cards = await page.$$eval(selector, (nodes) => {
+    // const cards = await page.$$eval(selector, (nodes) => {
+    //     return nodes.map(node => {
+    //         const src = node.querySelector('img').src;
+    //         const species = node.querySelector('.species').textContent;
+
+    //         return {
+    //             src,
+    //             species,
+    //         }
+    //     })
+    // })
+
+    const arts = await page.$$eval(selector, (nodes) => {
         return nodes.map(node => {
-            const src = node.querySelector('img').src;
-            const species = node.querySelector('.species').textContent;
+            const imageSource = node.querySelector('.gallery-item-thumbnail-wrap').querySelector('img').src;
+            const author = node.querySelector('.fg-item-title').textContent;
+            const info = node.querySelector('.fg-item-content').querySelector('p').textContent;
 
             return {
-                src,
-                species,
+                imageSource,
+                author,
+                info,
             }
         })
     })
 
     browser.close();
 
-    return cards;
+    return arts;
 }
 
-scrapeArt('https://learnwebcode.github.io/practice-requests/').then(data => {
+scrapeArt('https://www.arthunt.sk/diela/').then(data => {
     console.log(data);
 })
