@@ -1,6 +1,7 @@
 'use strict';
 
 const puppeteer = require('puppeteer');
+const fs = require('fs/promises');
 
 const selector = '.eael-gallery-grid-item';
 
@@ -80,4 +81,6 @@ async function scrapeArthuntSite(url){
 
 scrapeArthuntSite('https://www.arthunt.sk/diela/').then(data => {
     console.log(data);
+    const writeData = JSON.stringify(data);
+    fs.writeFile('data.json', writeData, 'utf8');
 })
