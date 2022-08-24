@@ -18,10 +18,13 @@ class ArtItem {
         this.#imageSource = imageSource;
         this.#height = height;
         this.#width = width;
+        this.#searchPhrase = '404 NOT FOUND';
+        this.#code = this.#createCode();
         this.#found = false;
     }
     
     // ==== GETERS ====
+
     getName(){
         return this.#name;
     }
@@ -59,6 +62,7 @@ class ArtItem {
     }
 
     // ==== SETTERS ====
+
     setName(name){
         this.#name = name
     }
@@ -97,8 +101,12 @@ class ArtItem {
     
     // ==== METHODS ====
 
+    #createCode(){
+        return crypto.randomUUID();
+    }
 
-
-
+    // TO-DO:
+    //   1. found information
+    //   2. remove found information
 
 }
