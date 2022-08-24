@@ -102,7 +102,7 @@ class ArtItem {
     // ==== METHODS ====
 
     #createCode(){
-        return crypto.randomUUID();
+        return crypto.randomUUID().slice(-5);
     }
 
     // TO-DO:
