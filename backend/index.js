@@ -2,6 +2,7 @@
 
 const puppeteer = require('puppeteer');
 const fs = require('fs/promises');
+const { info } = require('console');
 
 const selector = '.eael-gallery-grid-item';
 
@@ -15,24 +16,34 @@ const selector = '.eael-gallery-grid-item';
 
  /**
   * 
-  * @param {string} infoString - Unformatted string containing all of the basic information about an art item, e.g., "Dielo: FebruaryTyp: PrintRozmer: 29,7 x 42 cm"
+  * @param {string} infoString - Unformatted string containing all of the basic information about an art item, e.g., "Dielo: ty alebo ja?Typ: Kombinovaná technikaRozmer: 40 x 40 cm"
   * @returns {ArtItemInformation}  
   */
-function extractInfo(infoString){
-    let name, type, rest;   
-    let tmp = infoString.replaceAll(/ /g, ''); // remove all spaces
+  function extractInfo(infoString){
+    let name, type, rest;
+    let tmp = infoString.replaceAll(' ', ''); // fix U+00a0 character (no-break space)
 
     [name, rest] = tmp.replace('Dielo:', '').split('Typ:');
     [type, rest] = rest.split('Rozmer:');
     let [height, width] = rest.replace('cm', '').replace(',', '.').split('x');
-    
+
+    // trim white spaces (start & end)
+    [name, type, height, width] = [name, type, height, width].map(str => str.trim());
+    console.log(name);
+    console.log(type);
+    console.log(height);
+    console.log(width);
+
     height = parseFloat(height);
     width = parseFloat(width);
 
-    return {name,type,height,width,};
+    return {
+        name,
+        type,
+        height,
+        width,
+    };
 }
-
-
 
 /**
  * @typedef ArtItem
@@ -73,6 +84,7 @@ async function scrapeArthuntSite(url){
     const artItemArray = arts.map(art => {
         const {imageSource, author, infoString} = art;
         let tmp = extractInfo(infoString);
+
         return {imageSource, author, ...tmp};
     })
 
