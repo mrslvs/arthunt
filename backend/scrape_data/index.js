@@ -1,5 +1,6 @@
 'use strict';
 
+const { rejects } = require('assert');
 const puppeteer = require('puppeteer');
 
 const selector = '.eael-gallery-grid-item';
@@ -89,9 +90,8 @@ async function scrapeArthuntSite(url){
     return artItemArray;
 }
 
-let artItemPartialArray;
-scrapeArthuntSite('https://www.arthunt.sk/diela/').then(data => {
-    artItemPartialArray = data;
+module.exports = new Promise((resolve) => {
+    scrapeArthuntSite('https://www.arthunt.sk/diela/').then(data => {
+        resolve(JSON.stringify(data));
+    })
 })
-
-module.exports = artItemPartialArray;
