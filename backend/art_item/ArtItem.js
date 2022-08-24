@@ -110,3 +110,5 @@ class ArtItem {
     //   2. remove found information
 
 }
+
+module.exports = ArtItem;
