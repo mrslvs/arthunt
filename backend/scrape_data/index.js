@@ -1,8 +1,6 @@
 'use strict';
 
 const puppeteer = require('puppeteer');
-const fs = require('fs/promises');
-const { info } = require('console');
 
 const selector = '.eael-gallery-grid-item';
 
@@ -46,7 +44,7 @@ const selector = '.eael-gallery-grid-item';
 }
 
 /**
- * @typedef ArtItem
+ * @typedef ArtItemPartial
  * @property {string} imageSource - Image URL
  * @property {string} author - Author's name
  * @property {string} name - Name of the art item
@@ -58,7 +56,7 @@ const selector = '.eael-gallery-grid-item';
 /**
  * 
  * @param {string} url - URL address of art items 
- * @returns {ArtItem[]}
+ * @returns {ArtItemPartial[]}
  */
 async function scrapeArthuntSite(url){
     const browser = await puppeteer.launch();
@@ -91,8 +89,9 @@ async function scrapeArthuntSite(url){
     return artItemArray;
 }
 
+let artItemPartialArray;
 scrapeArthuntSite('https://www.arthunt.sk/diela/').then(data => {
-    console.log(data);
-    const writeData = JSON.stringify(data);
-    fs.writeFile('data.json', writeData, 'utf8');
+    artItemPartialArray = data;
 })
+
+module.exports = artItemPartialArray;
