@@ -6,6 +6,8 @@ const PORT = 8080;
 
 app.use(express.json()); // use middleware
 
+const codeArt = 'abc123';
+
 app.listen(PORT, ()=>{
     console.log(`Listening on http://localhost:${PORT}`)
 });
