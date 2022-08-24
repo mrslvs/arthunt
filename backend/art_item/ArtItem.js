@@ -1,21 +1,25 @@
 'use strict';
 
+const crypto = require('crypto');
+
 class ArtItem {
     #name;
     #author;
     #type;
-    #imageSource;
+    #imageURL;
+    #image;
     #height;
     #width;
     #searchPhrase;
     #code;
     #found;
 
-    constructor(name, author, type, imageSource, height, width){
+    constructor(name, author, type, imageURL, height, width){
         this.#name = name;
         this.#author = author;
         this.#type = type;
-        this.#imageSource = imageSource;
+        this.#imageURL = imageURL;
+        this.#image = this.#getImagePath();
         this.#height = height;
         this.#width = width;
         this.#searchPhrase = '404 NOT FOUND';
@@ -37,8 +41,12 @@ class ArtItem {
         return this.#type;
     }
 
-    getImageSource(){
-        return this.#imageSource;
+    getImageURL(){
+        return this.#imageURL;
+    }
+
+    getImage(){
+        return this.#image;
     }
 
     getHeight(){
@@ -75,8 +83,12 @@ class ArtItem {
         this.#type = type;
     }
 
-    setImageSource(imgSrc){
-        this.#imageSource = imgSrc;
+    setImageURL(imgSrc){
+        this.#imageURL = imgSrc;
+    }
+
+    setImage(imgPath){
+        this.#image = imgPath;
     }
 
     setHeight(height){
@@ -105,8 +117,20 @@ class ArtItem {
         return crypto.randomUUID().slice(-5);
     }
 
+    isCodeCorrect(code){
+        if(code === this.#code){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    #getImagePath(){
+        return this.#imageURL.slice(this.#imageURL.lastIndexOf('/') + 1);
+    }
+
     // TO-DO:
-    //   1. found information
+    //   1. add found information
     //   2. remove found information
 
 }
