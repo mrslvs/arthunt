@@ -2,6 +2,7 @@
 
 const puppeteer = require('puppeteer');
 require('dotenv').config({path: '../.env'});
+const crypto = require('crypto');
 
 const selector = '.eael-gallery-grid-item';
 
@@ -11,14 +12,14 @@ const selector = '.eael-gallery-grid-item';
  * @property {string} type - Type of the art item
  * @property {float} height - Height of the art item
  * @property {float} width - Width of the art ttem
- */
+*/
 
- /**
+/**
   * 
   * @param {string} infoString - Unformatted string containing all of the basic information about an art item, e.g., "Dielo: ty alebo ja?Typ: Kombinovaná technikaRozmer: 40 x 40 cm"
   * @returns {ArtItemInformation}  
-  */
-  function extractInfo(infoString){
+*/
+function extractInfo(infoString){
     let name, type, rest;
     let tmp = infoString.replaceAll(' ', ''); // fix U+00a0 character (no-break space)
 
@@ -44,9 +45,13 @@ const selector = '.eael-gallery-grid-item';
     };
 }
 
+function getImagePath(imageURL){
+    return imageURL.slice(imageURL.lastIndexOf('/') + 1);
+}
+
 /**
  * @typedef ArtItemPartial
- * @property {string} imageSource - Image URL
+ * @property {string} imageURL - Image URL
  * @property {string} author - Author's name
  * @property {string} name - Name of the art item
  * @property {string} type - Type of the art item
@@ -67,12 +72,12 @@ async function scrapeArthuntSite(){
 
         const arts = await page.$$eval(selector, (nodes) => {
             return nodes.map(node => {
-                const imageSource = node.querySelector('.gallery-item-thumbnail-wrap').querySelector('img').src;
+                const imageURL = node.querySelector('.gallery-item-thumbnail-wrap').querySelector('img').src;
                 const author = node.querySelector('.fg-item-title').textContent;
                 const infoString = node.querySelector('.fg-item-content').querySelector('p').textContent; // 'Dielo: FebruaryTyp: PrintRozmer: 29,7 x 42 cm'
 
                 return {
-                    imageSource,
+                    imageURL,
                     author,
                     infoString,
                 }
@@ -82,10 +87,13 @@ async function scrapeArthuntSite(){
         browser.close();
         
         const artItemArray = arts.map(art => {
-            const {imageSource, author, infoString} = art;
+            const {imageURL, author, infoString} = art;
             let tmp = extractInfo(infoString);
 
-            return {imageSource, author, ...tmp};
+            // imageURL, author, name, type, height, width
+            const code = crypto.randomUUID().slice(-5);
+            const image = getImagePath(imageURL);
+            return {imageURL, image, author, code, ...tmp};
         })
 
         return artItemArray;

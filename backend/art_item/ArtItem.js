@@ -1,7 +1,5 @@
 'use strict';
 
-const crypto = require('crypto');
-
 class ArtItem {
     #name;
     #author;
@@ -14,7 +12,7 @@ class ArtItem {
     #code;
     #found;
 
-    constructor(name, author, type, imageURL, height, width){
+    constructor(name, author, type, imageURL, height, width, code){
         this.#name = name;
         this.#author = author;
         this.#type = type;
@@ -23,7 +21,7 @@ class ArtItem {
         this.#height = height;
         this.#width = width;
         this.#searchPhrase = '404 NOT FOUND';
-        this.#code = this.#createCode();
+        this.#code = code;
         this.#found = false;
     }
     
@@ -112,10 +110,6 @@ class ArtItem {
     }
     
     // ==== METHODS ====
-
-    #createCode(){
-        return crypto.randomUUID().slice(-5);
-    }
 
     #getImagePath(){
         return this.#imageURL.slice(this.#imageURL.lastIndexOf('/') + 1);
