@@ -12,15 +12,15 @@ class ArtItem {
     #code;
     #found;
 
-    constructor(name, author, type, imageURL, height, width, code){
+    constructor(name, author, type, imageURL, image, height, width, code){
         this.#name = name;
         this.#author = author;
         this.#type = type;
         this.#imageURL = imageURL;
-        this.#image = this.#getImagePath();
+        this.#image = image;
         this.#height = height;
         this.#width = width;
-        this.#searchPhrase = '404 NOT FOUND';
+        this.#searchPhrase = undefined;
         this.#code = code;
         this.#found = false;
     }
@@ -110,10 +110,6 @@ class ArtItem {
     }
     
     // ==== METHODS ====
-
-    #getImagePath(){
-        return this.#imageURL.slice(this.#imageURL.lastIndexOf('/') + 1);
-    }
 
     isCodeCorrect(code){
         if(code === this.#code){
