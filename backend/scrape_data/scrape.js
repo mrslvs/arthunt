@@ -90,8 +90,11 @@ async function scrapeArthuntSite(url){
     return artItemArray;
 }
 
-module.exports = new Promise((resolve) => {
-    scrapeArthuntSite('https://www.arthunt.sk/diela/').then(data => {
-        resolve(JSON.stringify(data));
-    })
-})
+module.exports = scrapeArthuntSite;
+
+
+// module.exports = new Promise((resolve) => {
+//     scrapeArthuntSite('https://www.arthunt.sk/diela/').then(data => {
+//         resolve(JSON.stringify(data));
+//     })
+// })
