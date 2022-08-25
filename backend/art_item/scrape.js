@@ -1,7 +1,7 @@
 'use strict';
 
-const { rejects } = require('assert');
 const puppeteer = require('puppeteer');
+require('dotenv').config({path: '../.env'});
 
 const selector = '.eael-gallery-grid-item';
 
@@ -56,12 +56,12 @@ const selector = '.eael-gallery-grid-item';
 
 /**
  * 
- * @param {string} url - URL address of art items 
  * @returns {ArtItemPartial[]}
  */
-async function scrapeArthuntSite(url){
+async function scrapeArthuntSite(){
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    const url = process.env.ARTHUNT_SITE;
     await page.goto(url, {waitUntil: 'domcontentloaded'});
 
     const arts = await page.$$eval(selector, (nodes) => {
