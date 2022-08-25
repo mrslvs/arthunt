@@ -59,35 +59,39 @@ const selector = '.eael-gallery-grid-item';
  * @returns {ArtItemPartial[]}
  */
 async function scrapeArthuntSite(){
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    const url = process.env.ARTHUNT_SITE;
-    await page.goto(url, {waitUntil: 'domcontentloaded'});
+    try{
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        const url = process.env.ARTHUNT_SITE;
+        await page.goto(url, {waitUntil: 'domcontentloaded'});
 
-    const arts = await page.$$eval(selector, (nodes) => {
-        return nodes.map(node => {
-            const imageSource = node.querySelector('.gallery-item-thumbnail-wrap').querySelector('img').src;
-            const author = node.querySelector('.fg-item-title').textContent;
-            const infoString = node.querySelector('.fg-item-content').querySelector('p').textContent; // 'Dielo: FebruaryTyp: PrintRozmer: 29,7 x 42 cm'
+        const arts = await page.$$eval(selector, (nodes) => {
+            return nodes.map(node => {
+                const imageSource = node.querySelector('.gallery-item-thumbnail-wrap').querySelector('img').src;
+                const author = node.querySelector('.fg-item-title').textContent;
+                const infoString = node.querySelector('.fg-item-content').querySelector('p').textContent; // 'Dielo: FebruaryTyp: PrintRozmer: 29,7 x 42 cm'
 
-            return {
-                imageSource,
-                author,
-                infoString,
-            }
+                return {
+                    imageSource,
+                    author,
+                    infoString,
+                }
+            })
         })
-    })
 
-    browser.close();
-    
-    const artItemArray = arts.map(art => {
-        const {imageSource, author, infoString} = art;
-        let tmp = extractInfo(infoString);
+        browser.close();
+        
+        const artItemArray = arts.map(art => {
+            const {imageSource, author, infoString} = art;
+            let tmp = extractInfo(infoString);
 
-        return {imageSource, author, ...tmp};
-    })
+            return {imageSource, author, ...tmp};
+        })
 
-    return artItemArray;
+        return artItemArray;
+    }catch(error){
+        console.log(error);
+    }
 }
 
 module.exports = scrapeArthuntSite;
