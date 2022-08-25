@@ -1,8 +1,10 @@
 'use strict';
 
 const puppeteer = require('puppeteer');
-require('dotenv').config({path: '../.env'});
 const crypto = require('crypto');
+const fs = require('fs');
+const request = require('request');
+require('dotenv').config({path: '../.env'});
 
 const selector = '.eael-gallery-grid-item';
 
@@ -93,6 +95,7 @@ async function scrapeArthuntSite(){
             // imageURL, author, name, type, height, width
             const code = crypto.randomUUID().slice(-5);
             const image = getImagePath(imageURL);
+
             return {imageURL, image, author, code, ...tmp};
         })
 
@@ -102,7 +105,18 @@ async function scrapeArthuntSite(){
     }
 }
 
-module.exports = scrapeArthuntSite;
+function downloadImage(url, image){
+    return new Promise((resolve) => {
+        request.head(url, function (err, res, body) {
+            request(url).pipe(fs.createWriteStream(`../images/${image}`)).on('close', resolve);
+        })
+    })
+}
+
+module.exports = {
+    scrapeArthuntSite,
+    downloadImage
+};
 
 
 // module.exports = new Promise((resolve) => {
