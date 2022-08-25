@@ -88,14 +88,19 @@ async function scrapeArthuntSite(){
 
         browser.close();
         
+        let tmp = [];
+
         const artItemArray = arts.map(art => {
             const {imageURL, author, infoString} = art;
             let tmp = extractInfo(infoString);
 
-            // imageURL, author, name, type, height, width
-            const code = crypto.randomUUID().slice(-5);
-            const image = getImagePath(imageURL);
+            let code = crypto.randomUUID().slice(-5);
+            while(tmp.includes(code)){
+                code = crypto.randomUUID().slice(-5);
+            }
 
+            const image = getImagePath(imageURL);
+            
             return {imageURL, image, author, code, ...tmp};
         })
 
