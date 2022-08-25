@@ -129,6 +129,19 @@ class ArtItem {
         return this.#imageURL.slice(this.#imageURL.lastIndexOf('/') + 1);
     }
 
+    persistQueryValues(){
+        return `${this.#name}, 
+        ${this.#author}, 
+        ${this.#type}, 
+        ${this.#imageURL}, 
+        ${this.#image}, 
+        ${this.#height}, 
+        ${this.#width}, 
+        ${this.#searchPhrase}, 
+        ${this.#code}, 
+        ${this.#found}`
+    }
+
     // TO-DO:
     //   1. add found information
     //   2. remove found information
