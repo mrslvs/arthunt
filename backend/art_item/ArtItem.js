@@ -117,6 +117,10 @@ class ArtItem {
         return crypto.randomUUID().slice(-5);
     }
 
+    #getImagePath(){
+        return this.#imageURL.slice(this.#imageURL.lastIndexOf('/') + 1);
+    }
+
     isCodeCorrect(code){
         if(code === this.#code){
             return true;
@@ -124,11 +128,7 @@ class ArtItem {
             return false;
         }
     }
-
-    #getImagePath(){
-        return this.#imageURL.slice(this.#imageURL.lastIndexOf('/') + 1);
-    }
-
+    
     persistQueryValues(){
         return `${this.#name}, 
         ${this.#author}, 
@@ -141,11 +141,6 @@ class ArtItem {
         ${this.#code}, 
         ${this.#found}`
     }
-
-    // TO-DO:
-    //   1. add found information
-    //   2. remove found information
-
 }
 
 module.exports = ArtItem;

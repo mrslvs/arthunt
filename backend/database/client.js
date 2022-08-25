@@ -9,4 +9,4 @@ const client = new Client({
     password: process.env.DATABASE_PASSWORD
 });
 
-modules.export = client;
+module.exports = client;
