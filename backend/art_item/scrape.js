@@ -98,6 +98,7 @@ async function scrapeArthuntSite(){
             while(tmp.includes(code)){
                 code = crypto.randomUUID().slice(-5);
             }
+            tmp.push(code);
 
             const image = getImagePath(imageURL);
             
