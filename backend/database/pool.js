@@ -1,7 +1,8 @@
-const {Client} = require('pg');
+// const {Client} = require('pg');
+const {Pool} = require('pg');
 require('dotenv').config({path: '../.env'});
 
-const client = new Client({
+const pool = new Pool({
     host: process.env.DATABASE_HOST,
     port: process.env.DATABASE_PORT,
     database: process.env.DATABASE_NAME,
@@ -10,14 +11,14 @@ const client = new Client({
 });
 
 const insert = async function (tableName, tableStructure, values) {
+    const client = await pool.connect();
     try{
-        await client.connect();
-        await client.query(`INSERT INTO ${tableName} ${tableStructure} VALUES (${values})`);
+        await client.query(`INSERT INTO ${tableName} (${tableStructure}) VALUES (${values});`);
     }catch(error){
         console.log(error);
     }finally{
-        client.end();
+        client.release();
     }
 }
 
-module.exports = {client, insert};
+module.exports = {pool, insert};
