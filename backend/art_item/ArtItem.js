@@ -120,18 +120,18 @@ class ArtItem {
     }
     
     persistQueryValues(){
-        return `(
-            ${this.#name}, 
-            ${this.#author}, 
-            ${this.#type}, 
-            ${this.#imageURL}, 
-            ${this.#image}, 
+        return `
+            '${this.#name}', 
+            '${this.#author}', 
+            '${this.#type}', 
+            '${this.#imageURL}', 
+            '${this.#image}', 
             ${this.#height}, 
             ${this.#width}, 
-            ${this.#searchPhrase}, 
-            ${this.#code}, 
+            '${this.#searchPhrase}', 
+            '${this.#code}', 
             ${this.#found}
-        )`
+        `
     }
 }
 
