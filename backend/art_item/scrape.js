@@ -88,17 +88,17 @@ async function scrapeArthuntSite(){
 
         browser.close();
         
-        let tmp = [];
+        let tmp2 = [];
 
         const artItemArray = arts.map(art => {
             const {imageURL, author, infoString} = art;
             let tmp = extractInfo(infoString);
 
             let code = crypto.randomUUID().slice(-5);
-            while(tmp.includes(code)){
+            while(tmp2.includes(code)){
                 code = crypto.randomUUID().slice(-5);
             }
-            tmp.push(code);
+            tmp2.push(code);
 
             const image = getImagePath(imageURL);
             
