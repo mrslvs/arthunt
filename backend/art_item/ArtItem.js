@@ -20,7 +20,7 @@ class ArtItem {
         this.#image = image;
         this.#height = height;
         this.#width = width;
-        this.#searchPhrase = undefined;
+        this.#searchPhrase = '';
         this.#code = code;
         this.#found = false;
     }
@@ -120,16 +120,18 @@ class ArtItem {
     }
     
     persistQueryValues(){
-        return `${this.#name}, 
-        ${this.#author}, 
-        ${this.#type}, 
-        ${this.#imageURL}, 
-        ${this.#image}, 
-        ${this.#height}, 
-        ${this.#width}, 
-        ${this.#searchPhrase}, 
-        ${this.#code}, 
-        ${this.#found}`
+        return `(
+            ${this.#name}, 
+            ${this.#author}, 
+            ${this.#type}, 
+            ${this.#imageURL}, 
+            ${this.#image}, 
+            ${this.#height}, 
+            ${this.#width}, 
+            ${this.#searchPhrase}, 
+            ${this.#code}, 
+            ${this.#found}
+        )`
     }
 }
 
