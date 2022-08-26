@@ -1,4 +1,3 @@
-// const {Client} = require('pg');
 const {Pool} = require('pg');
 require('dotenv').config({path: '../.env'});
 
@@ -21,4 +20,4 @@ const insert = async function (tableName, tableStructure, values) {
     }
 }
 
-module.exports = {pool, insert};
+module.exports = {insert};

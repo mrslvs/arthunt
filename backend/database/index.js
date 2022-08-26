@@ -1,7 +1,7 @@
-const {client, insert} = require('./client.js');
+const {pool, insert} = require('./pool.js');
 // const insert = require('./connect.js');
 
 module.exports = {
-    client,
+    pool,
     insert
 };
