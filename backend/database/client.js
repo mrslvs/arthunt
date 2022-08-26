@@ -9,4 +9,15 @@ const client = new Client({
     password: process.env.DATABASE_PASSWORD
 });
 
-module.exports = client;
+const insert = async function (tableName, tableStructure, values) {
+    try{
+        await client.connect();
+        await client.query(`INSERT INTO ${tableName} ${tableStructure} VALUES (${values})`);
+    }catch(error){
+        console.log(error);
+    }finally{
+        client.end();
+    }
+}
+
+module.exports = {client, insert};
