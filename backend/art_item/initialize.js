@@ -1,5 +1,5 @@
 const {ArtItem, scrapeArthuntSite, downloadImage} = require('./index.js');
-const {client, insert} = require('../database/index.js');
+const {insert} = require('../database/index.js');
 require('dotenv').config({path: '../.env'});
 
 let artItemArray = [];
@@ -22,4 +22,8 @@ scrapeArthuntSite().then((data) => {
         artItemArray.push(tmp);
 
     });
+
+    artItemArray.forEach((art) => {
+        insert(process.env.DATABASE_TABLE, process.env.DATABASE_STRUCTURE, art.persistQueryValues());
+    })
 })

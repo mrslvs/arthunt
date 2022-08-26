@@ -12,7 +12,7 @@ const pool = new Pool({
 const insert = async function (tableName, tableStructure, values) {
     const client = await pool.connect();
     try{
-        await client.query(`INSERT INTO ${tableName} (${tableStructure}) VALUES (${values});`);
+        await client.query(`INSERT INTO ${tableName} (${tableStructure}) VALUES (${values})`);
     }catch(error){
         console.log(error);
     }finally{
