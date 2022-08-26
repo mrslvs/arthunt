@@ -105,8 +105,8 @@ class ArtItem {
         this.#code = code;
     }
     
-    toggleFound(){
-        this.#found = !this.#found;
+    markAsFound(){
+        this.#found = true;
     }
     
     // ==== METHODS ====
