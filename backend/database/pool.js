@@ -1,5 +1,6 @@
 const {Pool} = require('pg');
 require('dotenv').config({path: '../.env'});
+const fs = require('fs');
 
 const pool = new Pool({
     host: process.env.DATABASE_HOST,
@@ -20,4 +21,42 @@ const insert = async function (tableName, tableStructure, values) {
     }
 }
 
-module.exports = {insert};
+async function exportPublicData(tableName, tableStructure){
+    const client = await pool.connect()
+    try{
+        const data = await client.query(`SELECT id, ${tableStructure} FROM ${tableName}`);
+        // console.log(data.rows);
+        let dataArray = [];
+        data.rows.forEach(row => {
+            const {id, name, author, type, imageURL, image, height, width, searchPhrase, found} = row;
+            const artObj = {
+                id,
+                name,
+                author,
+                type,
+                imageURL,
+                image,
+                height,
+                width,
+                searchPhrase,
+                found
+            };
+
+            dataArray.push(artObj);
+        })
+
+        fs.writeFileSync('./public.json', JSON.stringify(dataArray), 'utf8');
+
+        return true;
+        }catch(error){
+            console.log(error);
+            return false;
+        }finally{
+            client.release();
+        }
+}
+
+module.exports = {
+    insert,
+    exportPublicData
+};

@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const PORT = process.env.APP_PORT;
-console.log(PORT);
 
 // app.use(express.json()); // parse response body
 app.use(bodyParser.urlencoded({extended: false})); // parse GET/POST body received from client
