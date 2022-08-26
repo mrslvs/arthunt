@@ -16,13 +16,8 @@ app.use((req, res, next) => {
     // request
     // response
     // next = has to be executed to allow request to travel on to another middleware
-    console.log("Use first middleware and call next()");
+    console.log("Someone visited page");
     next();
-})
-
-app.use((req,res, next) => {
-    console.log('Second middleware function');
-    console.log('===========================');
 })
 
 // app.get('/', (req,res) => {
