@@ -1,12 +1,13 @@
 const express = require('express');
 require('dotenv').config({path: './.env'});
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 const app = express();
 
 const PORT = process.env.APP_PORT;
 
-// app.use(express.json()); // parse response body
+app.use(express.json()); // parse response body
 app.use(bodyParser.urlencoded({extended: false})); // parse GET/POST body received from client
 app.use(express.static('../frontend/'))
 
@@ -19,10 +20,13 @@ app.use((req, res, next) => {
     next();
 })
 
-// app.get('/', (req,res) => {
-//     console.log('get request received and handled');
-//     res.status(200).send('<h1>hi<h1>');
-// })
+app.get('/test', (req,res) => {
+    console.log('get request received and handled');
+    const data = JSON.parse(fs.readFileSync('./public.json', 'utf8'));
+
+    res.json(data);
+    // res.status(200).send('<h1>hi<h1>');
+})
 
 app.post('/', (req,res) =>{
     console.log('post request received and handled');
