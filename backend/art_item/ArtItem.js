@@ -1,6 +1,8 @@
 'use strict';
+const crypto = require('crypto');
 
 class ArtItem {
+    #id;
     #name;
     #author;
     #type;
@@ -13,6 +15,7 @@ class ArtItem {
     #found;
 
     constructor(name, author, type, imageURL, image, height, width, code){
+        this.#id = crypto.randomUUID();
         this.#name = name;
         this.#author = author;
         this.#type = type;
@@ -132,6 +135,34 @@ class ArtItem {
             '${this.#code}', 
             ${this.#found}
         `
+    }
+
+    getPublicData(){
+        const id = this.#id;
+        const name = this.#name;
+        const author = this.#author;
+        const type = this.#type;
+        const imageURL = this.#imageURL;
+        const image = this.#image;
+        const height = this.#height;
+        const width = this.#width;
+        const searchPhrase = this.#searchPhrase;
+        const found = this.#found;
+
+        const tmp = {
+            id,
+            name,
+            author,
+            type,
+            imageURL,
+            image,
+            height,
+            width,
+            searchPhrase,
+            found
+        }
+
+        return tmp;
     }
 }
 
