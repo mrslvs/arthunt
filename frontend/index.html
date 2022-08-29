@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
 
     <title>Arthunt PAI</title>
 </head>
@@ -20,5 +21,19 @@
         <input type="text" id="post-input" name="code" />
         <input type="submit" value="POST" id="post-submit">
     </form>
+    <script>
+        const socket = io();
+
+        // =======================================================
+        // const socket = new WebSocket('ws://localhost:8383');
+
+        // socket.addEventListener('open', function(e){
+        //     socked.send("Hello server!");
+        // })
+
+        // socket.addEventListener('message', function(e){
+        //     console.log('Message from server: ', e.data);
+        // })
+    </script>
 </body>
 </html>
