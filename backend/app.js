@@ -36,6 +36,7 @@ scrapeArthuntSite().then((data) => {
     fs.writeFileSync('./public.json', JSON.stringify(artItemPublicData), 'utf8');
     fs.writeFileSync('./comparison.json', JSON.stringify(artItemComparisonData), 'utf8');
 }).then(() => {
+    // START Server
     const express = require('express');
     const app = express();
 
@@ -45,8 +46,16 @@ scrapeArthuntSite().then((data) => {
     const {Server} = require('socket.io');
     const io = new Server(server);
 
+
     app.use(express.static('../frontend/'));
 
+    const publicData = JSON.parse(fs.readFileSync('./public.json'));
+
+    app.get('/data', (req,res, next) => {
+        res.json(JSON.stringify(publicData));
+    })    
+
+    // POST
     const bodyParser = require('body-parser');
     app.use(bodyParser.urlencoded({extended: false})); // parse GET/POST body received from client
     
@@ -66,7 +75,7 @@ scrapeArthuntSite().then((data) => {
     });
 
     server.listen(PORT, () => {
-    console.log(`listening on ${PORT}`);
+    console.log(`Serve listening on http://localhost:${PORT}`);
     });
 })
 

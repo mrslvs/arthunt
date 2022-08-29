@@ -4,6 +4,35 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: aquamarine;
+html {
+    /* set font size to 10px */
+    font-size: 62.5%;
+    font-family: Montserrat, "Lucida Sans", "Lucida Sans Regular",
+        "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+#art-items-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
+.art-item{
+    padding: 5px;
+    display:flex;
+}
+
+img {
+    max-height: 40vh;
+    max-width: auto;
+}
+
+.author {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.name {
+    font-style: italic;
 }
