@@ -11,28 +11,23 @@
 </head>
 <body>
     <h1>Arthunt API</h1>
-
-    <form method="get" action="/">
-        <input type="text" id="get-input" />
-        <input type="submit" value="GET" id="get-submit">
-    </form>
-    <hr>
-    <form method="post" action="/">
+    <form id="my-form" method="post" action="/">
         <input type="text" id="post-input" name="code" />
         <input type="submit" value="POST" id="post-submit">
     </form>
     <script>
         const socket = io();
 
-        // =======================================================
-        // const socket = new WebSocket('ws://localhost:8383');
+        const form = document.getElementById('my-form');
+        const input = document.getElementById('post-input');
 
-        // socket.addEventListener('open', function(e){
-        //     socked.send("Hello server!");
-        // })
+        // form.addEventListener('submit', function(e) {
+        //     e.preventDefault();
 
-        // socket.addEventListener('message', function(e){
-        //     console.log('Message from server: ', e.data);
+        //     if(input.value){
+        //         socket.emit('code', input.value);
+        //         input.value = '';
+        //     }
         // })
     </script>
 </body>

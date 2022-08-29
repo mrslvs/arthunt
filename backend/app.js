@@ -11,12 +11,26 @@ const server = http.createServer(app);
 const {Server} = require('socket.io');
 const io = new Server(server);
 
-app.get('/', (req, res) =>{
-    res.sendFile('/home/mrslvs/projects/arthunt/frontend/index.html');
+// app.get('/', (req, res) =>{
+//     res.sendFile('/home/mrslvs/projects/arthunt/frontend/');
+// })
+
+app.use(express.static('../frontend/'))
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false})); // parse GET/POST body received from client
+app.post('/', (req, res) => {
+    console.log("post request received");
+    console.log(req.body);
+    res.status(200).send('your code is valid or invalid.. we decide');
 })
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+
+  socket.on('code', msg => {
+    console.log('received code: ' + msg);
+  })
 });
 
 server.listen(PORT, () => {
@@ -24,7 +38,6 @@ server.listen(PORT, () => {
 });
 
 
-// const bodyParser = require('body-parser');
 // const fs = require('fs');
 
 
