@@ -10,7 +10,7 @@
     <title>Arthunt PAI</title>
 </head>
 <body>
-    <h1>Arthunt API</h1>
+    <h1 id="title">Arthunt API</h1>
     <form id="my-form" method="post" action="/">
         <input type="text" id="post-input" name="code" />
         <input type="submit" value="POST" id="post-submit">
@@ -21,21 +21,24 @@
 
         const container = document.getElementById('art-items-list');
 
-        let artArray;
-        const getData = function() {
+        // let artArray;
+        // const getData = function() {
             (async function() {
                 const response = await fetch('http://localhost:8383/data');
                 const data = await response.json();
                 artArray = JSON.parse(data);
+
+                const title = document.getElementById('title');
+                title.style.color = 'red';
 
                 artArray.forEach(item => {
                     const html = getArtHTML(item);
                     renderArt(html);
                 })
             })()
-        }
+        // }
         
-        window.onload = getData;
+        // window.onload = getData;
 
         socket.on('foundEvent', function(msg) {
             console.log(msg);
@@ -53,7 +56,8 @@
                         <p class="author">${artItem.author}</p>
                         <p class="name">${artItem.name}</p>
                         <p class="type">${artItem.type}</p>
-                        <p class="dimensions">${artItem.height} x ${artItem.width}</p>
+                        <p class="dimensions">${artItem.height} x ${artItem.width} cm</p>
+                        <p class="phrase">Hladaj ma na panenskej ceste pri lavickach. Drevo je tam.</p>
                     </div>
                 </div>
             `
