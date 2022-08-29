@@ -21,14 +21,9 @@
         const form = document.getElementById('my-form');
         const input = document.getElementById('post-input');
 
-        // form.addEventListener('submit', function(e) {
-        //     e.preventDefault();
-
-        //     if(input.value){
-        //         socket.emit('code', input.value);
-        //         input.value = '';
-        //     }
-        // })
+        socket.on('foundEvent', function(msg) {
+            console.log(msg);
+        })
     </script>
 </body>
 </html>
