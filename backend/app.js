@@ -13,12 +13,22 @@ const io = new Server(server);
 
 app.use(express.static('../frontend/'));
 
+const fs = require('fs');
+const ArtItems = JSON.parse(fs.readFileSync('./public.json', 'utf8'));
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false})); // parse GET/POST body received from client
 app.post('/', (req, res) => {
-    console.log("post request received");
     const {code} = req.body;
-    console.log(req.body);
+    console.log("Received code: " + code);
+    let foundId;
+
+    ArtItems.forEach(art => {
+        if(art.code === code){
+            foundId = art.id;
+        }
+    })
+
     io.emit('foundEvent', code);
     res.status(200).send('your code is valid or invalid.. we decide');
 })
@@ -44,7 +54,6 @@ server.listen(PORT, () => {
 
 
 
-// const fs = require('fs');
 
 
 // ===================================================================

@@ -29,10 +29,15 @@ scrapeArthuntSite().then((data) => {
     // })
 
     let artItemPublicData = [];
+    let artItemComparisonData = [];
     artItemArray.forEach(art => {
         const tmpObject = art.getPublicData();
+        const tmpObject2 = art.getComparisonData();
+
         artItemPublicData.push(tmpObject);
+        artItemComparisonData.push(tmpObject2);
     })
 
     fs.writeFileSync('../public.json', JSON.stringify(artItemPublicData), 'utf8');
+    fs.writeFileSync('../comparison.json', JSON.stringify(artItemComparisonData), 'utf8');
 })

@@ -164,6 +164,18 @@ class ArtItem {
 
         return tmp;
     }
+
+    getComparisonData(){
+        const id = this.#id;
+        const code = this.#code;
+
+        const tmp = {
+            id,
+            code
+        }
+
+        return tmp;
+    }
 }
 
 module.exports = ArtItem;
