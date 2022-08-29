@@ -114,7 +114,7 @@ async function scrapeArthuntSite(){
 function downloadImage(url, image){
     return new Promise((resolve) => {
         request.head(url, function (err, res, body) {
-            request(url).pipe(fs.createWriteStream(`../images/${image}`)).on('close', resolve);
+            request(url).pipe(fs.createWriteStream(`./images/${image}`)).on('close', resolve);
         })
     })
 }
