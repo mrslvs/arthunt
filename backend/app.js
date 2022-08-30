@@ -96,7 +96,7 @@ scrapeArthuntSite().then((data) => {
 
         if(foundArtId){
             io.emit('foundArt', foundArtId);
-            res.status(200).sendFile('/home/mrslvs/projects/arthunt/frontend/success.html');
+            res.status(200).sendFile(`${process.env.ROOT_FOLDER}/frontend/success.html`);
         }else{
             res.status(404).send('Incorrect code, try again <a href="http://localhost:8383">Try again</a>');
         }

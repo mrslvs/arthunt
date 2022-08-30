@@ -6,11 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
+    <style>
+        /* nav */
+        nav > ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            gap: 3rem;
+        }
 
-    <title>Arthunt PAI</title>
+        nav > ul > li {
+            list-style-type: none;
+        }
+
+        nav > ul > li > a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 2rem;
+            color: black;
+        }
+
+        nav > ul > li > a:hover {
+            list-style-type: none;
+            color: #efc06e;
+            transition: color 0.5s; 
+        }
+    </style>
+
+    <title>Arthunt API</title>
 </head>
 <body>
-    <h1>Arthunt API</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="https://www.arthunt.sk/">Arthunt</a></li>
+                <li><a href="https://www.arthunt.sk/kontakt/">Arthunt kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
     <form id="my-form" method="post" action="/">
         <input type="text" id="post-input" name="code" />
         <input type="submit" value="POST" id="post-submit">
@@ -21,8 +55,6 @@
 
         const container = document.getElementById('art-items-list');
 
-        // let artArray;
-        // const getData = function() {
             (async function() {
                 const response = await fetch('http://localhost:8383/data');
                 const data = await response.json();
@@ -33,13 +65,10 @@
                     renderArt(html);
                 })
 
-                console.log(artArray);
+                // console.log(artArray);
             })()
-        // }
-        
-        // window.onload = getData;
 
-        socket.on('foundEvent', function(id) {
+        socket.on('foundArt', function(id) {
             console.log(id);
             const newlyFoundItem = document.getElementById(id);
             newlyFoundItem.classList.add('found');

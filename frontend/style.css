@@ -136,11 +136,20 @@ img {
     }
 }
 
-@media (max-width: 640px){
-    
-}
-
 @media (max-width: 480px){
+    img {
+        max-width: 170px;
+        min-width: 170px;
+        max-height: 170px;
+        min-height: 170px;
+    }
 
+    .author {
+        font-size: 1.8rem;
+    }
+
+    .phrase {
+        font-size: 1.5rem;
+    }
 }
 
