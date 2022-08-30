@@ -53,7 +53,7 @@
         const getArtHTML = function(artItem){
             const html = `
                 <div class="art-item ${artItem.found ? 'found' : ''}" id="${artItem.id}">
-                    <img src="${artItem.imageURL}">
+                    <img src="./images/${artItem.image}">
                     <div class="description">
                         <p class="author">${artItem.author}</p>
                         <p class="name">${artItem.name}</p>
