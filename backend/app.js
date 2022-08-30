@@ -42,8 +42,8 @@ scrapeArthuntSite().then((data) => {
         artItemComparisonData.push(tmpObject2);
     })
 
-    fs.writeFileSync('./public.json', JSON.stringify(artItemPublicData), 'utf8');
-    fs.writeFileSync('./comparison.json', JSON.stringify(artItemComparisonData), 'utf8');
+    fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`, JSON.stringify(artItemPublicData), 'utf8');
+    fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`, JSON.stringify(artItemComparisonData), 'utf8');
 }).then(() => {
     // START Server
     const express = require('express');
@@ -56,9 +56,9 @@ scrapeArthuntSite().then((data) => {
     const io = new Server(server);
 
 
-    app.use(express.static('../frontend/'));
+    app.use(express.static(`${process.env.ROOT_FOLDER}/frontend/`));
 
-    let publicData = JSON.parse(fs.readFileSync('./public.json'));
+    let publicData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`));
     // const comparisonData = JSON.parse(fs.readFileSync('./comparison.json'));
     
     app.get('/data', (req,res, next) => {
@@ -74,7 +74,7 @@ scrapeArthuntSite().then((data) => {
         console.log("Received code: " + code);
 
         // --------- handle code comparison ---------
-        let comparisonData = JSON.parse(fs.readFileSync('./comparison.json'));
+        let comparisonData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`));
         let foundArtId;
         comparisonData.forEach(art => {
             if(art.code === code && !art.found){
@@ -83,15 +83,15 @@ scrapeArthuntSite().then((data) => {
             }
         });
 
-        fs.writeFileSync('./comparison.json', JSON.stringify(comparisonData), 'utf8');
+        fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`, JSON.stringify(comparisonData), 'utf8');
 
-        publicData = JSON.parse(fs.readFileSync('./public.json'));
+        publicData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`));
         publicData.forEach(art => {
             if(art.id == foundArtId){
                 art.found = !art.found;
             }
         })
-        fs.writeFileSync('./public.json', JSON.stringify(publicData), 'utf8');
+        fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`, JSON.stringify(publicData), 'utf8');
 
 
         if(foundArtId){
