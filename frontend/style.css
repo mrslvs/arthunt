@@ -30,6 +30,10 @@ html {
     display:flex;
 }
 
+.found{
+    background-color: rgb(249, 138, 138);
+}
+
 img {
     object-fit: cover;
     max-width: 350px;

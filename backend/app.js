@@ -5,6 +5,15 @@ const fs = require('fs');
 const PORT = process.env.APP_PORT;
 let artItemArray = [];
 
+const successHTML = `
+    <div>
+    <h1>Gratulujeme, nasli ste dielo!</h1>
+    <p>Prosim odfotte sa s dielom a poslite fotku na whatsapp na +421 123 456 789</p>
+    <h1>Congratulations, you have found an art!</h1>
+    <p>Please take a photo with the art and send it to us via whatsapp on +421 123 456 789</p>
+    </div>
+`
+
 scrapeArthuntSite().then((data) => {
     data.forEach(art => {
         downloadImage(art.imageURL, art.image);
@@ -49,8 +58,9 @@ scrapeArthuntSite().then((data) => {
 
     app.use(express.static('../frontend/'));
 
-    const publicData = JSON.parse(fs.readFileSync('./public.json'));
-
+    let publicData = JSON.parse(fs.readFileSync('./public.json'));
+    // const comparisonData = JSON.parse(fs.readFileSync('./comparison.json'));
+    
     app.get('/data', (req,res, next) => {
         res.json(JSON.stringify(publicData));
     })    
@@ -62,12 +72,35 @@ scrapeArthuntSite().then((data) => {
     app.post('/', (req, res) => {
         const {code} = req.body;
         console.log("Received code: " + code);
-        let foundId;
 
-        // handle code comparison
+        // --------- handle code comparison ---------
+        let comparisonData = JSON.parse(fs.readFileSync('./comparison.json'));
+        let foundArtId;
+        comparisonData.forEach(art => {
+            if(art.code === code && !art.found){
+                foundArtId = art.id;
+                art.found = !art.found;
+            }
+        });
 
-        io.emit('foundEvent', code);
-        res.status(200).send('your code is valid or invalid.. we decide');
+        fs.writeFileSync('./comparison.json', JSON.stringify(comparisonData), 'utf8');
+
+        publicData = JSON.parse(fs.readFileSync('./public.json'));
+        publicData.forEach(art => {
+            if(art.id == foundArtId){
+                art.found = !art.found;
+            }
+        })
+        fs.writeFileSync('./public.json', JSON.stringify(publicData), 'utf8');
+
+
+        if(foundArtId){
+            io.emit('foundArt', foundArtId);
+            res.status(200).sendFile('/home/mrslvs/projects/arthunt/frontend/success.html');
+        }else{
+            res.status(404).send('Incorrect code, try again <a href="http://localhost:8383">Try again</a>');
+        }
+        
     })
 
     io.on('connection', (socket) => {

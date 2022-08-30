@@ -10,7 +10,7 @@
     <title>Arthunt PAI</title>
 </head>
 <body>
-    <h1 id="title">Arthunt API</h1>
+    <h1>Arthunt API</h1>
     <form id="my-form" method="post" action="/">
         <input type="text" id="post-input" name="code" />
         <input type="submit" value="POST" id="post-submit">
@@ -28,20 +28,22 @@
                 const data = await response.json();
                 artArray = JSON.parse(data);
 
-                const title = document.getElementById('title');
-                title.style.color = 'red';
-
                 artArray.forEach(item => {
                     const html = getArtHTML(item);
                     renderArt(html);
                 })
+
+                console.log(artArray);
             })()
         // }
         
         // window.onload = getData;
 
-        socket.on('foundEvent', function(msg) {
-            console.log(msg);
+        socket.on('foundEvent', function(id) {
+            console.log(id);
+            const newlyFoundItem = document.getElementById(id);
+            newlyFoundItem.classList.add('found');
+
         })
 
         const renderArt = function(artHTML){
@@ -50,7 +52,7 @@
 
         const getArtHTML = function(artItem){
             const html = `
-                <div class="art-item" id="${artItem.id}">
+                <div class="art-item ${artItem.found ? 'found' : ''}" id="${artItem.id}">
                     <img src="${artItem.imageURL}">
                     <div class="description">
                         <p class="author">${artItem.author}</p>

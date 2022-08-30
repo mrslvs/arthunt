@@ -168,10 +168,12 @@ class ArtItem {
     getComparisonData(){
         const id = this.#id;
         const code = this.#code;
+        const found = this.#found;
 
         const tmp = {
             id,
-            code
+            code,
+            found
         }
 
         return tmp;
