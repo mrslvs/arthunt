@@ -68,7 +68,8 @@ function getImagePath(imageURL){
 async function scrapeArthuntSite(){
     try{
         const browser = await puppeteer.launch({
-            executablePath: '/usr/bin/chromium-browser'
+            headless: true,
+            args: ['--use-gl=egl', '--no-sandbox', '--disable-setuid-sandbox']
           });
         const page = await browser.newPage();
         const url = process.env.ARTHUNT_SITE;
