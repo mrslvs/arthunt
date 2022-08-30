@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "update": "node ./art_item/update.js",
-    "start": "node ./routing/index.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
