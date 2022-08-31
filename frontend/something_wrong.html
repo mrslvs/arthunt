@@ -58,10 +58,17 @@
             color: black;
         }
 
-        nav > ul > li > a:hover {
+        nav > ul > li > a:hover, .lnk:hover {
             list-style-type: none;
             color: #efc06e;
             transition: color 0.5s; 
+        }
+
+        .lnk{
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            border-bottom: 2px solid #efc06e;
         }
 
         @media (max-width: 648px){
@@ -94,9 +101,13 @@
     <div class="message-wrong">
         <h2 class="martop">Niekde sa stala chyba.</h2>
         <p>Prosim kontaktujte nas na telefonnom cisle <a href="tel:+421123456789">+421 123 456 789</a></p>
-        <p>Alebo sa vratte <a href="./index.html">spat</a></p>
+        <p>Alebo sa vratte <a href="./index.html" class="lnk">spat</a></p>
         <h2 class="martop">Something went wront</h2>
         <p>Please contact us on phone number <a href="tel:+421123456789">+421 123 456 789</a></p>
+        <p>Or go <a href="./index.html" class="lnk">back</a></p>
     </div>
+    <footer>
+        <p>API made by <a href="https://www.linkedin.com/in/miroslav-sekerka/" class="footer-lnk">Miroslav Sekerka</a></p>
+    </footer>
 </body>
 </html>
