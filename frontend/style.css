@@ -11,6 +11,23 @@ html {
         "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.container > p {
+    font-size: 1.2rem;
+}
+
+form{
+    margin-bottom: 1rem;
+}
+
 #art-items-list{
     display: grid;
     grid-template-columns: repeat(2, 1fr);

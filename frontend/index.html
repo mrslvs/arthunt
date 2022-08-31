@@ -46,10 +46,15 @@
             </ul>
         </nav>
     </header>
-    <form id="my-form" method="post" action="/">
-        <input type="text" id="post-input" name="code" />
-        <input type="submit" value="POST" id="post-submit">
-    </form>
+    <div class="container">
+        <form id="my-form" method="post" action="/">
+            <label for="code">Zadaj kod obrazu</label>
+            <input type="text" id="post-input" name="code" placeholder="code"/>
+            <input type="submit" value="Odoslat" id="post-submit">
+        </form>
+        <p>Ak ste nasli dielo, zadajte jeho kod do policka hore a odoslite ho. Najdene diela sa updatujuu v realnom case, preto nie je nutne stranke refreshovat.</p>
+        <p>If you found an art, please enter the code into input field above and submit it. Found arts are updated in real time, therefore you don't need to refresh the page.</p>
+    </div>
     <div id="art-items-list"></div>
     <footer>
         <p>API made by <a href="https://www.linkedin.com/in/miroslav-sekerka/" class="footer-lnk">Miroslav Sekerka</a></p>
