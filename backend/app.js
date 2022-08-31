@@ -1,4 +1,3 @@
-const {ArtItem} = require('./art_item/index.js');
 require('dotenv').config({path: './.env'});
 const fs = require('fs');
 
