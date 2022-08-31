@@ -28,20 +28,26 @@ RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
 # --------------------------------------------------------------------
 
 # set working directory
+# CMD ["sh", "-c", ""]
 WORKDIR /usr/src/app
-CMD ["sh", "-c", "chown -R pptruser:pptruser /usr/src/app/*"]
-CMD ["sh", "-c", "chmod -R 777 usr/src/app/* "]
+# RUN cd /usr/src/ && mkdir app
+RUN chown -R pptruser:pptruser /usr/src/app/
+RUN cd /usr/src/app && mkdir backend
+RUN chown -R pptruser:pptruser /usr/src/app/backend/
+# CMD ["sh", "-c", "chmod -R 777 usr/src/app/* "]
 # CMD ["sh", "-c", "chown -R pptruser:pptruser /usr/src/app/backend"]
 
-# Run everything after as non-privileged user.
-USER pptruser
 
 # copy json files into ./backend
 COPY --chown=pptruser:pptruser ./backend/package.json ./backend
 COPY --chown=pptruser:pptruser ./backend/package-lock.json ./backend
 
+# Run everything after as non-privileged user.
+USER pptruser
+
 # install dependencies from json files
-CMD ["sh", "-c", "cd backend/ && npm install"]
+# CMD ["sh", "-c", "cd backend/ && npm install"]
+RUN cd /usr/src/app/backend/ && npm install
 
 # copy everything into workdir
 COPY . .
