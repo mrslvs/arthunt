@@ -56,7 +56,7 @@
         const container = document.getElementById('art-items-list');
 
             (async function() {
-                const response = await fetch('http://localhost:8383/data');
+                const response = await fetch('http://localhost:8080/data');
                 const data = await response.json();
                 artArray = JSON.parse(data);
 
