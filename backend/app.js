@@ -2,7 +2,7 @@ const {ArtItem, scrapeArthuntSite, downloadImage} = require('./art_item/index.js
 require('dotenv').config({path: './.env'});
 const fs = require('fs');
 
-const PORT = process.env.APP_PORT;
+const PORT = process.env.PORT || process.env.APP_PORT;
 let artItemArray = [];
     // START Server
     const express = require('express');
