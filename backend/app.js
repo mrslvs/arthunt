@@ -1,4 +1,4 @@
-const {ArtItem, scrapeArthuntSite, downloadImage} = require('./art_item/index.js');
+const {ArtItem} = require('./art_item/index.js');
 require('dotenv').config({path: './.env'});
 const fs = require('fs');
 
@@ -18,7 +18,6 @@ let artItemArray = [];
     app.use(express.static(`${process.env.ROOT_FOLDER}/frontend/`));
 
     let publicData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`));
-    // const comparisonData = JSON.parse(fs.readFileSync('./comparison.json'));
     
     app.get('/data', (req,res, next) => {
         res.json(JSON.stringify(publicData));
@@ -57,7 +56,7 @@ let artItemArray = [];
             io.emit('foundArt', foundArtId);
             res.status(200).sendFile(`${process.env.ROOT_FOLDER}/frontend/success.html`);
         }else{
-            res.status(404).send('Incorrect code, try again <a href="http://localhost:8383">Try again</a>');
+            res.status(404).sendFile(`${process.env.ROOT_FOLDER}/frontend/something_wrong.html`);
         }
         
     })
@@ -67,5 +66,5 @@ let artItemArray = [];
     });
 
     server.listen(PORT, () => {
-    console.log(`Serve listening on http://localhost:${PORT}`);
+    console.log(`Server listening on http://localhost:${PORT}`);
     });
