@@ -47,13 +47,13 @@
         </nav>
     </header>
     <div class="container">
-        <form id="my-form" method="post" action="/">
-            <label for="code">Zadaj kod obrazu</label>
+        <form id="my-form" method="post" action="/" class="marbot">
+            <label for="code">Kód diela</label>
             <input type="text" id="post-input" name="code" placeholder="code"/>
-            <input type="submit" value="Odoslat" id="post-submit">
+            <input type="submit" value="Odoslať" id="post-submit">
         </form>
-        <p>Ak ste nasli dielo, zadajte jeho kod do policka hore a odoslite ho. Najdene diela sa updatujuu v realnom case, preto nie je nutne stranke refreshovat.</p>
-        <p>If you found an art, please enter the code into input field above and submit it. Found arts are updated in real time, therefore you don't need to refresh the page.</p>
+        <p class="marbot">Ak ste našli dielo, zadajte jeho kód do políčka hore a odošlite. Stránka sa aktualizuje automaticky, diela ktoré sa už našli budú vyznačené.</p>
+        <p>If you found an art, please enter the code into input field above and submit it. Page is updated autoamtically. Arts that have been found will be marked.</p>
     </div>
     <div id="art-items-list"></div>
     <footer>
@@ -79,7 +79,7 @@
         socket.on('foundArt', function(id) {
             const newlyFoundItem = document.getElementById(id);
             newlyFoundItem.classList.add('found');
-
+            newlyFoundItem.querySelector('.phrase').textContent = 'Dielo sa našlo.';
         })
 
         const renderArt = function(artHTML){
