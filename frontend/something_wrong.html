@@ -17,7 +17,8 @@
             font-family: Montserrat, "Lucida Sans", "Lucida Sans Regular",
                 "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
         }
-        .message-success{
+
+        .message-wrong{
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -26,7 +27,7 @@
             margin-left: 1rem;
             margin-right: 1rem;
         }
-
+        
         .martop{
             margin-top: 2rem;
         }
@@ -51,16 +52,23 @@
 
         nav > ul > li > a {
             text-decoration: none;
-            font-weight: bold;
             border-bottom: 2px solid #efc06e;
+            font-weight: bold;
             font-size: 2rem;
             color: black;
         }
 
-        nav > ul > li > a:hover {
+        nav > ul > li > a:hover, .lnk:hover {
             list-style-type: none;
             color: #efc06e;
             transition: color 0.5s; 
+        }
+
+        .lnk{
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            border-bottom: 2px solid #efc06e;
         }
 
         .delim{
@@ -76,7 +84,7 @@
                 font-size: 3rem;
             }
 
-            .message-success{
+            .message-wrong{
                 font-size: 1.5rem;
             }
 
@@ -98,16 +106,20 @@
             </ul>
         </nav>
     </header>
-    <div class="message-success">
-        <h2 class="martop">Gratulujeme!</h2>
-        <p>Prosím pošlite nám kód cez SMS alebo Whatsapp. Budeme tiež radi ak nám pošlete fotku s dielom :).</p>
+    <div class="message-wrong">
+        <h2 class="martop">Niekde sa stala chyba</h2>
+        <p>Prosím kontaktujte nás na telefónnom čísle</p>
         <br>
         <a href="tel:+421123456789">+421 123 456 789</a>
+        <br>
+        <p>Alebo sa vráťte na <a href="./index.html" class="lnk">hlavnú stránku API</a></p>
         <div class="delim"></div>
-        <h2>Congratulations!</h2>
-        <p>Please send us code via message or Whatsapp. We will be also glad if you take a photo with the art and send it to us </p>
+        <h2>Something went wront</h2>
+        <p>Please contact us on phone number</p>
         <br>
         <a href="tel:+421123456789">+421 123 456 789</a>
+        <br>
+        <p>Or go back to <a href="./index.html" class="lnk">main API page</a></p>
     </div>
 </body>
 </html>

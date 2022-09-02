@@ -22,6 +22,7 @@
 
         nav > ul > li > a {
             text-decoration: none;
+            border-bottom: 2px solid #efc06e;
             font-weight: bold;
             font-size: 2rem;
             color: black;
@@ -45,18 +46,27 @@
             </ul>
         </nav>
     </header>
-    <form id="my-form" method="post" action="/">
-        <input type="text" id="post-input" name="code" />
-        <input type="submit" value="POST" id="post-submit">
-    </form>
+    <div class="container">
+        <form id="my-form" method="post" action="/" class="marbot">
+            <label for="code">Kód diela</label>
+            <input type="text" id="post-input" name="code" placeholder="code"/>
+            <input type="submit" value="Odoslať" id="post-submit">
+        </form>
+        <p class="marbot">Ak ste našli dielo, zadajte jeho kód do políčka hore a odošlite. Stránka sa aktualizuje automaticky, diela ktoré sa už našli budú vyznačené.</p>
+        <p>If you found an art, please enter the code into input field above and submit it. Page is updated autoamtically. Arts that have been found will be marked.</p>
+    </div>
     <div id="art-items-list"></div>
+    <footer>
+        <p>API made by <a href="https://www.linkedin.com/in/miroslav-sekerka/" class="footer-lnk">Miroslav Sekerka</a></p>
+    </footer>
     <script>
         const socket = io();
 
         const container = document.getElementById('art-items-list');
 
             (async function() {
-                const response = await fetch('http://localhost:8080/data');
+                // const response = await fetch('https://arttest.azurewebsites.net/data');
+                const response = await fetch('http://localhost:8383/data');
                 const data = await response.json();
                 artArray = JSON.parse(data);
 
@@ -64,15 +74,12 @@
                     const html = getArtHTML(item);
                     renderArt(html);
                 })
-
-                // console.log(artArray);
             })()
 
         socket.on('foundArt', function(id) {
-            console.log(id);
             const newlyFoundItem = document.getElementById(id);
             newlyFoundItem.classList.add('found');
-
+            newlyFoundItem.querySelector('.phrase').textContent = 'Dielo sa našlo.';
         })
 
         const renderArt = function(artHTML){
