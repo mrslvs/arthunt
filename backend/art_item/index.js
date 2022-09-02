@@ -1,7 +1,8 @@
 const ArtItem = require('./ArtItem');
-const { createArtItems } = require('./scrape.js');
+const { createArtItems, includeEventData } = require('./scrape.js');
 
 module.exports = {
     ArtItem,
     createArtItems,
+    includeEventData,
 };

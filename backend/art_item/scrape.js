@@ -163,8 +163,23 @@ async function createArtItems() {
     }
 }
 
+async function includeEventData(artItemArray) {
+    const eventData = JSON.parse(fs.readFileSync('./event.json'));
+
+    artItemArray.forEach((art) => {
+        const tmp = eventData.find((obj) => obj.name === art.getName());
+        if (tmp) {
+            art.setCode(tmp.code);
+            art.setSearchPhrase(tmp.searchPhrase);
+        }
+    });
+
+    return artItemArray;
+}
+
 module.exports = {
     createArtItems,
+    includeEventData,
 };
 
 // module.exports = new Promise((resolve) => {

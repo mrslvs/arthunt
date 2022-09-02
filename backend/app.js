@@ -1,4 +1,8 @@
-const { ArtItem, createArtItems } = require('./art_item/index.js');
+const {
+    ArtItem,
+    createArtItems,
+    includeEventData,
+} = require('./art_item/index.js');
 require('dotenv').config({ path: './.env' });
 const fs = require('fs');
 
@@ -6,17 +10,7 @@ const PORT = process.env.PORT || process.env.APP_PORT;
 
 createArtItems()
     .then((artItemArray) => {
-        const eventData = JSON.parse(fs.readFileSync('./event.json'));
-
-        artItemArray.forEach((art) => {
-            const tmp = eventData.find((obj) => obj.name === art.getName());
-            if (tmp) {
-                art.setCode(tmp.code);
-                art.setSearchPhrase(tmp.searchPhrase);
-            }
-        });
-
-        return artItemArray;
+        return includeEventData(artItemArray);
     })
     .then((artItemArray) => {
         // START Server
