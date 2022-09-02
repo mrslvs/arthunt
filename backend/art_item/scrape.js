@@ -181,9 +181,3 @@ module.exports = {
     createArtItems,
     includeEventData,
 };
-
-// module.exports = new Promise((resolve) => {
-//     scrapeArthuntSite('https://www.arthunt.sk/diela/').then(data => {
-//         resolve(JSON.stringify(data));
-//     })
-// })

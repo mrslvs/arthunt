@@ -10,6 +10,8 @@ const PORT = process.env.PORT || process.env.APP_PORT;
 
 createArtItems()
     .then((artItemArray) => {
+        artItemArray.forEach((art) => {});
+
         return includeEventData(artItemArray);
     })
     .then((artItemArray) => {
@@ -25,8 +27,6 @@ createArtItems()
 
         app.use(express.static(`${process.env.ROOT_FOLDER}/frontend/`));
 
-        // let publicData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`));
-
         app.get('/data', (req, res, next) => {
             let publicData = [];
             artItemArray.forEach((art) => {
@@ -36,8 +36,6 @@ createArtItems()
 
             res.json(JSON.stringify(publicData));
         });
-
-        console.log(artItemArray[0].getCode());
 
         // POST
         const bodyParser = require('body-parser');
