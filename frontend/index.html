@@ -95,7 +95,7 @@
                         <p class="name">${artItem.name}</p>
                         <p class="type">${artItem.type}</p>
                         <p class="dimensions">${artItem.height} x ${artItem.width} cm</p>
-                        <p class="phrase">Hladaj ma na panenskej ceste pri lavickach. Drevo je tam.</p>
+                        <p class="phrase">${artItem.found ? 'Dielo sa našlo.' : artItem.searchPhrase}</p>
                     </div>
                 </div>
             `

@@ -31,6 +31,8 @@ createArtItems().then((artItemArray) => {
         res.json(JSON.stringify(publicData));
     })    
 
+    console.log(artItemArray[0].getCode());
+
     // POST
     const bodyParser = require('body-parser');
     app.use(bodyParser.urlencoded({extended: false})); // parse GET/POST body received from client
@@ -39,20 +41,15 @@ createArtItems().then((artItemArray) => {
         const {code} = req.body;
         console.log("Received code: " + code);
 
-        let foundArt;
         artItemArray.forEach(art => {
             if(art.isCodeEqual(code)){
-                foundArt = art;
+                io.emit('foundArt', art.getId());
+                art.markAsFound();
+                return res.status(200).sendFile(`${process.env.ROOT_FOLDER}/frontend/success.html`);
             }
         });
         
-        if(foundArt){
-            foundArt.markAsFound();
-            io.emit('foundArt', foundArt.getId());
-            res.status(200).sendFile(`${process.env.ROOT_FOLDER}/frontend/success.html`);
-        }else{
-            res.status(404).sendFile(`${process.env.ROOT_FOLDER}/frontend/something_wrong.html`);
-        }        
+        return res.status(404).sendFile(`${process.env.ROOT_FOLDER}/frontend/something_wrong.html`);  
     })
 
     io.on('connection', (socket) => {
