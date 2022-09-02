@@ -14,7 +14,7 @@ class ArtItem {
     #code;
     #found;
 
-    constructor(name, author, type, imageURL, image, height, width, code){
+    constructor(name, author, type, imageURL, image, height, width, code) {
         this.#id = crypto.randomUUID();
         this.#name = name;
         this.#author = author;
@@ -23,110 +23,111 @@ class ArtItem {
         this.#image = image;
         this.#height = height;
         this.#width = width;
-        this.#searchPhrase = 'Here comes the search phrase once obtained from organizer.';
+        this.#searchPhrase =
+            'Here comes the search phrase once obtained from organizer.';
         this.#code = code;
         this.#found = false;
     }
-    
+
     // ==== GETERS ====
 
-    getId(){
+    getId() {
         return this.#id;
     }
 
-    getName(){
+    getName() {
         return this.#name;
     }
 
-    getAuthor(){
+    getAuthor() {
         return this.#author;
     }
 
-    getType(){
+    getType() {
         return this.#type;
     }
 
-    getImageURL(){
+    getImageURL() {
         return this.#imageURL;
     }
 
-    getImage(){
+    getImage() {
         return this.#image;
     }
 
-    getHeight(){
+    getHeight() {
         return this.#height;
     }
 
-    getWidth(){
+    getWidth() {
         return this.#width;
     }
 
-    getSearchPhrase(){
+    getSearchPhrase() {
         return this.#searchPhrase;
     }
 
-    getCode(){
+    getCode() {
         return this.#code;
     }
-    
-    getFound(){
+
+    getFound() {
         return this.#found;
     }
 
     // ==== SETTERS ====
 
-    setName(name){
-        this.#name = name
+    setName(name) {
+        this.#name = name;
     }
 
-    setAuthor(author){
+    setAuthor(author) {
         this.#author = author;
     }
 
-    setType(type){
+    setType(type) {
         this.#type = type;
     }
 
-    setImageURL(imgSrc){
+    setImageURL(imgSrc) {
         this.#imageURL = imgSrc;
     }
 
-    setImage(imgPath){
+    setImage(imgPath) {
         this.#image = imgPath;
     }
 
-    setHeight(height){
+    setHeight(height) {
         this.#height = height;
     }
 
-    setWidth(width){
+    setWidth(width) {
         this.#width = width;
     }
 
-    setSearchPhrase(searchPhrase){
+    setSearchPhrase(searchPhrase) {
         this.#searchPhrase = searchPhrase;
     }
-    
-    setCode(code){
+
+    setCode(code) {
         this.#code = code;
     }
-    
-    markAsFound(){
+
+    markAsFound() {
         this.#found = true;
     }
-    
+
     // ==== METHODS ====
 
-    isCodeEqual(code){
-        if(code === this.#code){
+    isCodeEqual(code) {
+        if (code === this.#code) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    persistQueryValues(){
+
+    persistQueryValues() {
         return `
             '${this.#name}', 
             '${this.#author}', 
@@ -138,10 +139,10 @@ class ArtItem {
             '${this.#searchPhrase}', 
             '${this.#code}', 
             ${this.#found}
-        `
+        `;
     }
 
-    getPublicData(){
+    getPublicData() {
         const id = this.#id;
         const name = this.#name;
         const author = this.#author;
@@ -163,13 +164,13 @@ class ArtItem {
             height,
             width,
             searchPhrase,
-            found
-        }
+            found,
+        };
 
         return tmp;
     }
 
-    getComparisonData(){
+    getComparisonData() {
         const id = this.#id;
         const code = this.#code;
         const found = this.#found;
@@ -177,8 +178,8 @@ class ArtItem {
         const tmp = {
             id,
             code,
-            found
-        }
+            found,
+        };
 
         return tmp;
     }
