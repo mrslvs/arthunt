@@ -114,7 +114,7 @@ class ArtItem {
     
     // ==== METHODS ====
 
-    isCodeCorrect(code){
+    isCodeEqual(code){
         if(code === this.#code){
             return true;
         }else{
