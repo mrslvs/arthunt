@@ -23,7 +23,7 @@ class ArtItem {
         this.#image = image;
         this.#height = height;
         this.#width = width;
-        this.#searchPhrase = '';
+        this.#searchPhrase = 'Here comes the search phrase once obtained from organizer.';
         this.#code = code;
         this.#found = false;
     }

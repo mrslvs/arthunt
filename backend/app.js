@@ -20,12 +20,11 @@ createArtItems().then((artItemArray) => {
     app.use(express.static(`${process.env.ROOT_FOLDER}/frontend/`));
     
     let publicData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`));
-    // const comparisonData = JSON.parse(fs.readFileSync('./comparison.json'));
     
     app.get('/data', (req,res, next) => {
         res.json(JSON.stringify(publicData));
     })    
-    
+
     // POST
     const bodyParser = require('body-parser');
     app.use(bodyParser.urlencoded({extended: false})); // parse GET/POST body received from client
@@ -33,7 +32,7 @@ createArtItems().then((artItemArray) => {
     app.post('/', (req, res) => {
         const {code} = req.body;
         console.log("Received code: " + code);
-        
+
         // --------- handle code comparison ---------
         let comparisonData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`));
         let foundArtId;
@@ -43,9 +42,9 @@ createArtItems().then((artItemArray) => {
                 art.found = !art.found;
             }
         });
-        
+
         fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`, JSON.stringify(comparisonData), 'utf8');
-        
+
         publicData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`));
         publicData.forEach(art => {
             if(art.id == foundArtId){
@@ -53,24 +52,24 @@ createArtItems().then((artItemArray) => {
             }
         })
         fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`, JSON.stringify(publicData), 'utf8');
-        
-        
+
+
         if(foundArtId){
             io.emit('foundArt', foundArtId);
             res.status(200).sendFile(`${process.env.ROOT_FOLDER}/frontend/success.html`);
         }else{
-            res.status(404).send('Incorrect code, try again <a href="http://localhost:8383">Try again</a>');
+            res.status(404).sendFile(`${process.env.ROOT_FOLDER}/frontend/something_wrong.html`);
         }
         
     })
-    
-    io.on('connection', (socket) => {
-    console.log('a user connected');
-});
 
-server.listen(PORT, () => {
-    console.log(`Serve listening on http://localhost:${PORT}`);
-});
+    io.on('connection', (socket) => {
+        console.log('a user connected');
+    });
+
+    server.listen(PORT, () => {
+        console.log(`Server has started`);
+    });
 
 })
 
