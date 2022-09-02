@@ -1,282 +1,542 @@
 [
     {
+        "name": "50. výročie mosta SNP",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "d1871"
+    },
+    {
         "name": "February",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "feb1"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "36e5b"
     },
     {
         "name": "Na lúke",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "nal2"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "62c05"
     },
     {
         "name": "Bubblegum",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "bub3"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "318f2"
     },
     {
         "name": "Palác Uhorskej eskomptnej a zmenárenskej banky",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "pal4"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "48034"
     },
     {
         "name": "Visceral",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "vis5"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "574a7"
     },
     {
         "name": "Saggitarius Capricornus Aquarius Pisces Aries Taurus",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "sagPF"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "a8bff"
     },
     {
         "name": "Blue memories",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "blu7"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "b3ac8"
     },
     {
         "name": "Origami Žabky",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "oriPF"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "ff16b"
     },
     {
         "name": "SOFIA",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "sof9"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "923c4"
     },
     {
         "name": "Maják",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "Search phrase from organizer."
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "fec1c"
     },
     {
         "name": "MIND TO MIND",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "min10"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "1df21"
     },
     {
         "name": "Dodge Challenger (1970)",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "dod11"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "90444"
     },
     {
         "name": "Ram",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "ram12"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "bb67d"
     },
     {
         "name": "Morská korytnačka",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abc1"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "94ff6"
     },
     {
         "name": "Červený rúž",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abc12"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "4288f"
     },
     {
         "name": "Peace for all",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abc13"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "468cf"
     },
     {
         "name": "Paix-mier",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abc14"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "cef93"
     },
     {
         "name": "ty alebo ja?",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abc15"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "81555"
     },
     {
         "name": "Bez názvu",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abc16"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "51703"
     },
     {
         "name": "Kto hľadá, ten nájde",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abc17"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "132a7"
     },
     {
         "name": "Rast",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abc18"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "8b5ed"
     },
     {
         "name": "“dream world”",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abc19"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "df025"
     },
     {
         "name": "Ilustrácia Banská Štiavnica",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd1"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "9fe3c"
     },
     {
         "name": "Obsession",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd2"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "fe0d6"
     },
     {
         "name": "Bubliny",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd3"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "b25ae"
     },
     {
         "name": "Golden-Green formation",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd4"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "d6743"
     },
     {
         "name": "Spišské párky",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd5"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "e5af8"
     },
     {
         "name": "Soundwave",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd7"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "2cb4d"
     },
     {
         "name": "Tajomstvo duše",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd8"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "51296"
     },
     {
         "name": "Zero Waste",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd9"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "0244e"
     },
     {
         "name": "Circular Building",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd10"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "700f1"
     },
     {
         "name": "Palisády",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd11"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "af0c5"
     },
     {
         "name": "Tu kábel, tu kábel",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd12"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "aaa07"
     },
     {
         "name": "busy",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd13"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "d7c6f"
     },
     {
         "name": "Túžba po modrej",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd14"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "cb118"
     },
     {
         "name": "Svetlo v tme",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd15"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "03c7c"
     },
     {
         "name": "K.N.P.M.",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd16"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "112eb"
     },
     {
         "name": "Bez názvu",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd17"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "ced89"
     },
     {
         "name": "Zápas slnka",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd18"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "1103e"
     },
     {
         "name": "Kvety",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcd19"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "6364f"
     },
     {
         "name": "Lubino",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde1"
-    },
-    {
-        "name": "Bez názvu",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde2"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "e5b77"
     },
     {
         "name": "Nový svet",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde3"
-    },
-    {
-        "name": "The Knight",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde4"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "c482b"
     },
     {
         "name": "Červienka",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde5"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "b2085"
     },
     {
         "name": "Zjavil sa anjel",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde6"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "d14c7"
     },
     {
         "name": "Pozdrav z leta",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde7"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "9fc35"
     },
     {
         "name": "Soft Structures",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde8"
-    },
-    {
-        "name": "Here to document myself spiraling into insanity",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde9"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "7361c"
     },
     {
         "name": "Dračí kameň",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde10"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "4d290"
     },
     {
         "name": "Jasná správa o konci sveta",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde11"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "68cc2"
     },
     {
         "name": "Energia",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde12"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "74bea"
     },
     {
         "name": "POROZ UMENIE",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde13"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "2b7ff"
     },
     {
         "name": "Bratislava",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde14"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "74920"
     },
     {
         "name": "ARTHUNT 100/100",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde15"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "c94c4"
     },
     {
         "name": "ARTHUNT 1/100",
-        "searchPhrase": "Search phrase from organizer.",
-        "code": "abcde17"
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "d595f"
+    },
+    {
+        "name": "50. výročie mosta SNP",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "0450e"
+    },
+    {
+        "name": "February",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "691ad"
+    },
+    {
+        "name": "Na lúke",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "d01a1"
+    },
+    {
+        "name": "Bubblegum",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "827a7"
+    },
+    {
+        "name": "Palác Uhorskej eskomptnej a zmenárenskej banky",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "72831"
+    },
+    {
+        "name": "Visceral",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "452c1"
+    },
+    {
+        "name": "Saggitarius Capricornus Aquarius Pisces Aries Taurus",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "9c00f"
+    },
+    {
+        "name": "Blue memories",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "b4deb"
+    },
+    {
+        "name": "Origami Žabky",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "3896e"
+    },
+    {
+        "name": "SOFIA",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "a7f30"
+    },
+    {
+        "name": "Maják",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "4d4dc"
+    },
+    {
+        "name": "MIND TO MIND",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "20776"
+    },
+    {
+        "name": "Dodge Challenger (1970)",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "4383b"
+    },
+    {
+        "name": "Ram",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "52751"
+    },
+    {
+        "name": "Morská korytnačka",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "0847f"
+    },
+    {
+        "name": "Červený rúž",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "3378f"
+    },
+    {
+        "name": "Peace for all",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "15b20"
+    },
+    {
+        "name": "Paix-mier",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "1d029"
+    },
+    {
+        "name": "ty alebo ja?",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "f11af"
+    },
+    {
+        "name": "Bez názvu",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "a86c7"
+    },
+    {
+        "name": "Kto hľadá, ten nájde",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "141ee"
+    },
+    {
+        "name": "Rast",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "07138"
+    },
+    {
+        "name": "“dream world”",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "19ef8"
+    },
+    {
+        "name": "Ilustrácia Banská Štiavnica",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "c51e8"
+    },
+    {
+        "name": "Obsession",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "cccf0"
+    },
+    {
+        "name": "Bubliny",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "1ccd3"
+    },
+    {
+        "name": "Golden-Green formation",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "f26b2"
+    },
+    {
+        "name": "Spišské párky",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "6522b"
+    },
+    {
+        "name": "Soundwave",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "0f00d"
+    },
+    {
+        "name": "Tajomstvo duše",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "92714"
+    },
+    {
+        "name": "Zero Waste",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "1f1c8"
+    },
+    {
+        "name": "Circular Building",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "9ba40"
+    },
+    {
+        "name": "Palisády",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "93235"
+    },
+    {
+        "name": "Tu kábel, tu kábel",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "2d8b0"
+    },
+    {
+        "name": "busy",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "8f290"
+    },
+    {
+        "name": "Túžba po modrej",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "4cddc"
+    },
+    {
+        "name": "Svetlo v tme",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "74ab1"
+    },
+    {
+        "name": "K.N.P.M.",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "0bef7"
+    },
+    {
+        "name": "Bez názvu",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "fb25b"
+    },
+    {
+        "name": "Zápas slnka",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "5112c"
+    },
+    {
+        "name": "Kvety",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "628a7"
+    },
+    {
+        "name": "Lubino",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "cf6ae"
+    },
+    {
+        "name": "Nový svet",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "e3941"
+    },
+    {
+        "name": "Červienka",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "27e3c"
+    },
+    {
+        "name": "Zjavil sa anjel",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "2173a"
+    },
+    {
+        "name": "Pozdrav z leta",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "d1c1d"
+    },
+    {
+        "name": "Soft Structures",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "28f94"
+    },
+    {
+        "name": "Dračí kameň",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "77b67"
+    },
+    {
+        "name": "Jasná správa o konci sveta",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "5fda4"
+    },
+    {
+        "name": "Energia",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "e15e2"
+    },
+    {
+        "name": "POROZ UMENIE",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "ae61f"
+    },
+    {
+        "name": "Bratislava",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "710b1"
+    },
+    {
+        "name": "ARTHUNT 100/100",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "1a38c"
+    },
+    {
+        "name": "ARTHUNT 1/100",
+        "searchPhrase": "Search phrase obtained from organizer.",
+        "code": "b1371"
     }
 ]
