@@ -1,70 +1,31 @@
-const {ArtItem, scrapeArthuntSite, downloadImage} = require('./art_item/index.js');
+const {ArtItem, createArtItems} = require('./art_item/index.js');
 require('dotenv').config({path: './.env'});
 const fs = require('fs');
 
-const PORT = process.env.APP_PORT;
-let artItemArray = [];
+const PORT = process.env.PORT || process.env.APP_PORT;
 
-const successHTML = `
-    <div>
-    <h1>Gratulujeme, nasli ste dielo!</h1>
-    <p>Prosim odfotte sa s dielom a poslite fotku na whatsapp na +421 123 456 789</p>
-    <h1>Congratulations, you have found an art!</h1>
-    <p>Please take a photo with the art and send it to us via whatsapp on +421 123 456 789</p>
-    </div>
-`
 
-scrapeArthuntSite().then((data) => {
-    data.forEach(art => {
-        downloadImage(art.imageURL, art.image);
-
-        const tmp = new ArtItem(
-            art.name, 
-            art.author, 
-            art.type, 
-            art.imageURL, 
-            art.image, 
-            art.height, 
-            art.width, 
-            art.code
-        );
-
-        artItemArray.push(tmp);
-    });
-
-    let artItemPublicData = [];
-    let artItemComparisonData = [];
-    artItemArray.forEach(art => {
-        const tmpObject = art.getPublicData();
-        const tmpObject2 = art.getComparisonData();
-
-        artItemPublicData.push(tmpObject);
-        artItemComparisonData.push(tmpObject2);
-    })
-
-    fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`, JSON.stringify(artItemPublicData), 'utf8');
-    fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`, JSON.stringify(artItemComparisonData), 'utf8');
-}).then(() => {
+createArtItems().then((artItemArray) => {
     // START Server
     const express = require('express');
     const app = express();
 
     const http = require('http');
     const server = http.createServer(app);
-
+    
     const {Server} = require('socket.io');
     const io = new Server(server);
-
-
+    
+    
     app.use(express.static(`${process.env.ROOT_FOLDER}/frontend/`));
-
+    
     let publicData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`));
     // const comparisonData = JSON.parse(fs.readFileSync('./comparison.json'));
     
     app.get('/data', (req,res, next) => {
         res.json(JSON.stringify(publicData));
     })    
-
+    
     // POST
     const bodyParser = require('body-parser');
     app.use(bodyParser.urlencoded({extended: false})); // parse GET/POST body received from client
@@ -72,7 +33,7 @@ scrapeArthuntSite().then((data) => {
     app.post('/', (req, res) => {
         const {code} = req.body;
         console.log("Received code: " + code);
-
+        
         // --------- handle code comparison ---------
         let comparisonData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`));
         let foundArtId;
@@ -82,9 +43,9 @@ scrapeArthuntSite().then((data) => {
                 art.found = !art.found;
             }
         });
-
+        
         fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`, JSON.stringify(comparisonData), 'utf8');
-
+        
         publicData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`));
         publicData.forEach(art => {
             if(art.id == foundArtId){
@@ -92,8 +53,8 @@ scrapeArthuntSite().then((data) => {
             }
         })
         fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`, JSON.stringify(publicData), 'utf8');
-
-
+        
+        
         if(foundArtId){
             io.emit('foundArt', foundArtId);
             res.status(200).sendFile(`${process.env.ROOT_FOLDER}/frontend/success.html`);
@@ -102,15 +63,123 @@ scrapeArthuntSite().then((data) => {
         }
         
     })
-
+    
     io.on('connection', (socket) => {
     console.log('a user connected');
-    });
+});
 
-    server.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Serve listening on http://localhost:${PORT}`);
-    });
+});
+
 })
+
+
+
+
+// 111111111111111111111111111111111111111111111111111111111111111111111111
+
+// scrapeArthuntSite().then((data) => {
+//     data.forEach(art => {
+//         downloadImage(art.imageURL, art.image);
+        
+//         const tmp = new ArtItem(
+//             art.name, 
+//             art.author, 
+//             art.type, 
+//             art.imageURL, 
+//             art.image, 
+//             art.height, 
+//             art.width, 
+//             art.code
+//             );
+            
+//             artItemArray.push(tmp);
+//         });
+        
+//         let artItemPublicData = [];
+//         let artItemComparisonData = [];
+//         artItemArray.forEach(art => {
+//         const tmpObject = art.getPublicData();
+//         const tmpObject2 = art.getComparisonData();
+
+//         artItemPublicData.push(tmpObject);
+//         artItemComparisonData.push(tmpObject2);
+//     })
+    
+//     fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`, JSON.stringify(artItemPublicData), 'utf8');
+//     fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`, JSON.stringify(artItemComparisonData), 'utf8');
+// }).then(() => {
+//     // START Server
+//     const express = require('express');
+//     const app = express();
+
+//     const http = require('http');
+//     const server = http.createServer(app);
+    
+//     const {Server} = require('socket.io');
+//     const io = new Server(server);
+    
+    
+//     app.use(express.static(`${process.env.ROOT_FOLDER}/frontend/`));
+    
+//     let publicData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`));
+//     // const comparisonData = JSON.parse(fs.readFileSync('./comparison.json'));
+    
+//     app.get('/data', (req,res, next) => {
+//         res.json(JSON.stringify(publicData));
+//     })    
+    
+//     // POST
+//     const bodyParser = require('body-parser');
+//     app.use(bodyParser.urlencoded({extended: false})); // parse GET/POST body received from client
+    
+//     app.post('/', (req, res) => {
+//         const {code} = req.body;
+//         console.log("Received code: " + code);
+        
+//         // --------- handle code comparison ---------
+//         let comparisonData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`));
+//         let foundArtId;
+//         comparisonData.forEach(art => {
+//             if(art.code === code && !art.found){
+//                 foundArtId = art.id;
+//                 art.found = !art.found;
+//             }
+//         });
+        
+//         fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/comparison.json`, JSON.stringify(comparisonData), 'utf8');
+        
+//         publicData = JSON.parse(fs.readFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`));
+//         publicData.forEach(art => {
+//             if(art.id == foundArtId){
+//                 art.found = !art.found;
+//             }
+//         })
+//         fs.writeFileSync(`${process.env.ROOT_FOLDER}/backend/public.json`, JSON.stringify(publicData), 'utf8');
+        
+        
+//         if(foundArtId){
+//             io.emit('foundArt', foundArtId);
+//             res.status(200).sendFile(`${process.env.ROOT_FOLDER}/frontend/success.html`);
+//         }else{
+//             res.status(404).send('Incorrect code, try again <a href="http://localhost:8383">Try again</a>');
+//         }
+        
+//     })
+    
+//     io.on('connection', (socket) => {
+//     console.log('a user connected');
+// });
+
+// server.listen(PORT, () => {
+//     console.log(`Serve listening on http://localhost:${PORT}`);
+// });
+// })
+
+// 111111111111111111111111111111111111111111111111111111111111111111111111
+
+
 
 
 // --------------------------------------------------------------------------------------------------

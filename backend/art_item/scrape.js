@@ -4,6 +4,7 @@ const puppeteer = require('puppeteer');
 const crypto = require('crypto');
 const fs = require('fs');
 const request = require('request');
+const ArtItem = require('./ArtItem.js')
 require('dotenv').config({path: '../.env'});
 
 const selector = '.eael-gallery-grid-item';
@@ -21,7 +22,7 @@ const selector = '.eael-gallery-grid-item';
   * @param {string} infoString - Unformatted string containing all of the basic information about an art item, e.g., "Dielo: ty alebo ja?Typ: Kombinovaná technikaRozmer: 40 x 40 cm"
   * @returns {ArtItemInformation}  
 */
-function extractInfo(infoString){
+function parseInfo(infoString){
     let name, type, rest;
     let tmp = infoString.replaceAll(' ', ''); // fix U+00a0 character (no-break space)
 
@@ -95,7 +96,7 @@ async function scrapeArthuntSite(){
 
         const artItemArray = arts.map(art => {
             const {imageURL, author, infoString} = art;
-            let tmp = extractInfo(infoString);
+            let tmp = parseInfo(infoString);
 
             let code = crypto.randomUUID().slice(-5);
             while(tmp2.includes(code)){
@@ -122,10 +123,40 @@ function downloadImage(url, image){
     })
 }
 
+async function createArtItems() {
+    let artItemArray = [];
+    try{
+        const data = await scrapeArthuntSite();
+
+        data.forEach(art => {
+            downloadImage(art.imageURL, art.image);
+
+
+            const tmp = new ArtItem(
+                art.name, 
+                art.author, 
+                art.type, 
+                art.imageURL, 
+                art.image, 
+                art.height, 
+                art.width, 
+                art.code
+            );
+
+            artItemArray.push(tmp);
+        })
+    }catch(err){
+        console.log(err);
+    }finally{
+        return artItemArray;
+    }
+}
+
 module.exports = {
-    scrapeArthuntSite,
-    downloadImage
+    createArtItems
 };
+
+
 
 
 // module.exports = new Promise((resolve) => {
