@@ -10,7 +10,14 @@ const PORT = process.env.PORT || process.env.APP_PORT;
 
 createArtItems()
     .then((artItemArray) => {
-        artItemArray.forEach((art) => {});
+        console.log(artItemArray.length);
+        let eventData = [];
+        artItemArray.forEach((art) => {
+            const tmpEvent = art.getEventData();
+            eventData.push(tmpEvent);
+        });
+
+        fs.writeFileSync('./event.json', JSON.stringify(eventData), 'utf8');
 
         return includeEventData(artItemArray);
     })

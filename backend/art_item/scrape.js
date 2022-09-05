@@ -163,7 +163,7 @@ async function createArtItems() {
     }
 }
 
-async function includeEventData(artItemArray) {
+function includeEventData(artItemArray) {
     const eventData = JSON.parse(fs.readFileSync('./event.json'));
 
     artItemArray.forEach((art) => {
